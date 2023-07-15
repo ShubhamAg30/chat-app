@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
@@ -9,6 +8,11 @@ require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
+
+const cors = require('cors');
+app.use(cors({
+    origin: ['https://chat-f70l.onrender.com', 'https://chat-server-z1uq.onrender.com']
+}));
 
 mongoose
   .connect(process.env.MONGO_URL, {
